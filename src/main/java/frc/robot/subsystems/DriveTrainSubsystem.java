@@ -11,10 +11,15 @@ import com.ctre.phoenix.motorcontrol.can.WPI_TalonSRX;
 import com.ctre.phoenix.motorcontrol.can.WPI_VictorSRX;
 
 public class DriveTrainSubsystem extends SubsystemBase{
-    private final WPI_TalonSRX leftOne = new WPI_TalonSRX(0);
-    private final WPI_VictorSRX leftTwo = new WPI_VictorSRX(1);
-    private final WPI_VictorSRX leftThree = new WPI_VictorSRX(2);
-    private final WPI_TalonSRX rightOne = new WPI_TalonSRX(3);
-    private final WPI_VictorSRX rightTwo = new WPI_VictorSRX(4);
-    private final WPI_VictorSRX rightThree = new WPI_VictorSRX(5);
+    private final Talon m_frontLeft = new Talon(1);
+    private final Victor m_midLeft = new Victor(2);
+    private final Victor m_rearLeft = new Victor(3);
+    private final SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_midLeft, m_rearLeft);
+
+    private final Talon m_frontRight = new Talon(4);
+    private final Victor m_midRight = new Victor(5);
+    private final Victor m_rearRight = new Victor(6);
+    private final SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_midRight, m_rearRight);
+
+    private final DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
 }
